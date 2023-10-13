@@ -22,6 +22,6 @@ to `/IOS14 Calendar view` folder.
 const like = 'sample';
 ```
 
-## Contributor
+## HOw Contributor
 
 - **[Muhammad Ahmad](https://www.linkedin.com/in/muhammad-ahmad-821963133)**
