@@ -24,4 +24,4 @@ const like = 'sample';
 
 ## Contributor
 
-TODO: **[Muhammad Ahmad](https://www.linkedin.com/in/muhammad-ahmad-821963133)**
+- **[Muhammad Ahmad](https://www.linkedin.com/in/muhammad-ahmad-821963133)**

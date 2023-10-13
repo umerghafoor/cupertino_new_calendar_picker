@@ -1,7 +1,10 @@
 name: cupertino_new_calendar
 description: Cupertino New IOS 14 Calendar View
 version: 0.0.1
-homepage: https://github.com/gm6534/newCalendar_ios-14.git
+homepage: https://github.com/gm6534/cupertino_new_calendar_picker.git
+authors: [
+  -Ghulam Mustafa
+  ]
 
 environment:
   sdk: '>=3.1.3 <4.0.0'
