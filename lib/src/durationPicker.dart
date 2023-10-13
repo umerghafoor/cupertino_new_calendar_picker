@@ -12,18 +12,16 @@ class DurationPicker extends StatelessWidget {
   final bool isInfiniteLoop;
   final bool isCalenderUse;
 
-  const DurationPicker(
-      {Key? key,
-      @required this.onChangedHours,
-      @required this.onChangedMinutes,
-      @required this.hours,
-      @required this.minutes,
-      this.isBorder = true,
-      this.isInfiniteLoop = false,
-      this.isCalenderUse = false,
-      })
-      : super(key: key);
-
+  const DurationPicker({
+    Key? key,
+    @required this.onChangedHours,
+    @required this.onChangedMinutes,
+    @required this.hours,
+    @required this.minutes,
+    this.isBorder = true,
+    this.isInfiniteLoop = false,
+    this.isCalenderUse = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +30,9 @@ class DurationPicker extends StatelessWidget {
     var orientation = MediaQuery.of(context).orientation;
     bool isPortrait = (orientation == Orientation.portrait) ? true : false;
     return Container(
+      // height: MediaQuery.of(context).copyWith().size.height * 0.25,
       decoration: BoxDecoration(
-          color: Colors.white,
+          // color: Colors.white,
           border: isBorder! ? Border.all(color: greyColor) : null,
           borderRadius: BorderRadius.circular(10)),
       child: Padding(
@@ -42,57 +41,71 @@ class DurationPicker extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              height: isPortrait ? (ht * 0.06) : (ht * 0.1),
-              width: isPortrait ? (wid * 0.8) : (wid * 0.7),
+              height: isPortrait ? (ht * 0.06) : (ht * 0.06),
+              width: isPortrait ? (wid * 0.8) : (wid * 0.6),
               decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
+                  color: Colors.grey.shade300,
                   borderRadius: BorderRadius.circular(10)),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                NumberPicker(
-                  axis: Axis.vertical,
-                  infiniteLoop: isInfiniteLoop,
-                  minValue: isCalenderUse ? 1 : 00,
-                  maxValue: 12,
-                  step: 1,
-                  // itemHeight: 50,
-                  itemWidth: 30,
-                  selectedTextStyle: const TextStyle(
-                      fontSize: 22.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w700),
-                  value: hours!,
-                  onChanged: onChangedHours!,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    // border: Border.all(color: Colors.black26),
-                  ),
-                ),
-                // hSpace(5),
-                const Text("hours"),
-                hSpace(10),
-                NumberPicker(
+                Expanded(
+                  child: NumberPicker(
                     axis: Axis.vertical,
                     infiniteLoop: isInfiniteLoop,
-                    minValue: 00,
-                    maxValue: 59,
+                    minValue: isCalenderUse ? 1 : 00,
+                    maxValue: 12,
                     step: 1,
                     // itemHeight: 50,
-                    itemWidth: 40,
+                    itemWidth: 30,
                     selectedTextStyle: const TextStyle(
                         fontSize: 22.0,
                         color: Colors.black,
                         fontWeight: FontWeight.w700),
-                    value: isCalenderUse ? minutes! : (hours! == 12 ? 0 : minutes!),
-                    onChanged: onChangedMinutes!,
+                    value: hours!,
+                    onChanged: onChangedHours!,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       // border: Border.all(color: Colors.black26),
-                    )),
+                    ),
+                  ),
+                ),
+                // hSpace(5),
+                const Expanded(
+                    child: Text(
+                  "hours",
+                  overflow: TextOverflow.ellipsis,
+                )),
+                hSpace(10),
+                Expanded(
+                  child: NumberPicker(
+                      axis: Axis.vertical,
+                      infiniteLoop: isInfiniteLoop,
+                      minValue: 00,
+                      maxValue: 59,
+                      step: 1,
+                      // itemHeight: 50,
+                      itemWidth: 40,
+                      selectedTextStyle: const TextStyle(
+                          fontSize: 22.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w700),
+                      value: isCalenderUse
+                          ? minutes!
+                          : (hours! == 12 ? 0 : minutes!),
+                      onChanged: onChangedMinutes!,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
+                        // border: Border.all(color: Colors.black26),
+                      )),
+                ),
                 hSpace(5),
-                const Text("minutes"),
+                const Expanded(
+                    child: Text(
+                  "minutes",
+                  overflow: TextOverflow.ellipsis,
+                )),
               ],
             ),
           ],
